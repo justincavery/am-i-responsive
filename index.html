@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<title>Am I Responsive?</title>
 	<meta name="description" content="Show off how responsive design looks across different browsers easily with this 4 in 1 viewport tool. See how your site looks on desktop, laptop, ipad & iphone.">
-	<link rel="stylesheet" href="ami.css">
+	<link rel="stylesheet" href="../css/ami.css">
 	<meta name="viewport" content="width=device-width">
 <script type="text/javascript">
 
@@ -46,10 +46,11 @@
 <section class="url">
 <h1>See your site responsive</h1>
 <form id="rwdform" name="rwdform">
-<input type="url" id="url" name="url"  placeholder="http:// <-must have">
+<input type="url" id="url" name="url" value=""  placeholder="http:// <-must have">
 
 <a class="button" href="#" onClick="_gaq.push(['_trackEvent', 'RWD', 'URL', document.rwdform.url.value]);" >GO!</a>
 </form>
+<div class="about-tool">
 <p class="intro">A time saving exercise by <a href="http://twitter.com/justinavery">@justinavery</a> for <a href="http://responsivedesignweekly.com">RWD Weekly Newsletter</a></p>
 <p>I take a lot of screen shots of the various device breakpoints for responsive design and it takes a while to prepare them. This tools allows me to get what I need quickly, and hopefully it can be helpful for showing your more visual clients what you mean by responsive design when a suite of products isn't at the ready.</p>
 <p>This is <strong>not</strong> a tool for testing, it is really important that you do that on real devices. This instead is a tool for quick screenshots (for me) and to visually allow people to <em>“get”</em> what you mean in client meetings.</p>
@@ -72,18 +73,20 @@
 
 <h2>Updates</h2>
 <ul>
+  <li><em>10/02/13</em> Updated so that pressing enter after adding a url will use the ?url get variable to update the iframes. This also means that you could share a link like <a href="http://ami.responsivedesign.is?url=http://www.thegreatdiscontent.com">http://ami.responsivedesign.is?url=http://www.thegreatdiscontent.com</a> and it will load it up, helpful for emailing clients.</li>
 	<li><em>09/02/13</em> Added jQuery UI for the ability to drag the elements around the page. Remember that the <code>&lt;div></code>'s are more than the visible image so you might need to play around a bit with where you can click. Thanks <a href="http://www.timjarvis.com/">Tim</a>.</li>
 	<li><em>09/02/13</em> update the layout to be responsive across devices (even though it was just a tool for screenshots), although the iframes are WAY taller on tablet and iphone then they should be, still need to fix that... thanks <a href="https://twitter.com/silentritual/status/299826821506162688">@silentritual</a> & <a href="https://twitter.com/amberweinberg/status/299897931346104321">@amberweinberg</a>.</li>
 	<li><em>09/02/13</em> Scroll bars removed from tablet and mobile, cheers <a href="https://twitter.com/benbrignell/status/299837240899678208">@benbrignall</a>.</li>
 </ul></p>
+</div>
 </section>
 <script src="//code.jquery.com/jquery-latest.js"></script>
 <script src="//code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
   <script>
 $(document).ready(function() {
 // Change iFrame on a Button Click Event
-    $( ".button" ).click(function(event){
-        $( "iframe" ).attr('src', $( '#url' ).val());
+    $(".button").click(function(event){
+        $("iframe").attr('src', $( '#url' ).val());
     });
 });
   </script>
@@ -100,6 +103,29 @@ $(document).ready(function() {
 
     });
 });
+</script>
+
+<script>
+
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+}
+var first = getUrlVars()["url"]; 
+var first = decodeURIComponent(first);
+
+
+if(first === "undefined") {
+  return true;
+}
+else {
+//  alert ("I am true " + first);
+  $("iframe").attr('src',(first));
+  $('#url').attr('value',(first));
+}
 </script>
 </body>
 </html>
