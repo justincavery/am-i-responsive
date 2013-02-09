@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Am I Responsive?</title>
+	<meta name="description" content="Show off how responsive design looks across different browsers easily with this 4 in 1 viewport tool. See how your site looks on desktop, laptop, ipad & iphone.">
+	<link rel="stylesheet" href="ami.css">
+	<meta name="viewport" content="width=device-width">
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30791350-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</head>
+<body class="ami">
+<div class="wrapper">
+<section class="display">
+<div class="mobile">
+  <iframe id="mobile" src="http://responsivedesignweekly.com">
+  </iframe>
+</div>
+
+<div class="tablet">
+  <iframe id="tablet" src="http://responsivedesignweekly.com">
+  </iframe>
+</div>
+<div class="laptop">
+  <iframe id="laptop" src="http://responsivedesignweekly.com">
+  </iframe>
+</div>
+<div class="desktop">
+  <iframe id="desktop" src="http://responsivedesignweekly.com">
+  </iframe>
+</div>
+
+</section>
+</div>
+<section class="url">
+<h1>See your site responsive</h1>
+<form>
+<input tabindex="0" type="url" id="url" name="url" value="http://">
+
+<a tabindex="1" class="button" href="#">GO!</a>
+</form>
+<p class="intro">A time saving exercise by <a href="http://twitter.com/justinavery">@justinavery</a> for <a href="http://responsivedesignweekly.com">RWD Weekly Newsletter</a></p>
+<p>I take a lot of screen shots of the various device breakpoints for responsive design and it takes a while to prepare them. This tools allows me to get what I need quickly, and hopefully it can be helpful for showing your more visual clients what you mean by responsive design when a suite of products isn't at the ready.</p>
+<p>This is <strong>not</strong> a tool for testing, it is really important that you do that on real devices. This instead is a tool for quick screenshots (for me) and to visually allow people to <em>“get”</em> what you mean in client meetings.</p>
+<h2>How it works</h2>
+<p>Add your URL to the input field and press GO! to see how your website looks across a few different viewports.</p>
+<h3>Viewports</h3>
+<dl>
+	<dt>Desktop</dt>
+	<dd>1600x992px scaled down to <code>scale(0.3181)</code></dd>
+	<dt>Laptop</dt>
+	<dd>1280x802px scaled down to <code>scale(0.277)</code></dd>
+	<dt>Tablet</dt>
+	<dd>767x1024px scaled down to <code>scale(0.219)</code></dd>
+	<dt>Mobile</dt>
+	<dd>320x480px scaled down to <code>scale(0.219)</code></dd>
+</dl>
+
+<h3>A note on the vieports</h3>
+<p>The viewports I have chosen are based on the devices that were a part of the responsive PSD layout I previously bought. Apologies to all the Adroid fans out there, you can save the <em>“Adroid has a bigger market share”</em> because although you're right I just don't care. Plus if you're going to use this to sell RWD to new clients they're likely to be more familiar and wow'd by Apple stuff anyway.</p>
+
+<h2>Updates</h2>
+<ul>
+	<li><em>09/02/13</em> Added jQuery UI for the ability to drag the elements around the page. Remember that the <code>&lt;div></code>'s are more than the visible image so you might need to play around a bit with where you can click. Thanks <a href="http://www.timjarvis.com/">Tim</a>.</li>
+	<li><em>09/02/13</em> update the layout to be responsive across devices (even though it was just a tool for screenshots), although the iframes are WAY taller on tablet and iphone then they should be, still need to fix that... thanks <a href="https://twitter.com/silentritual/status/299826821506162688">@silentritual</a> & <a href="https://twitter.com/amberweinberg/status/299897931346104321">@amberweinberg</a>.</li>
+	<li><em>09/02/13</em> Scroll bars removed from tablet and mobile, cheers <a href="https://twitter.com/benbrignell/status/299837240899678208">@benbrignall</a>.</li>
+</ul></p>
+</section>
+<script src="//code.jquery.com/jquery-latest.js"></script>
+<script src="//code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+
+  <script>
+$(document).ready(function() {
+// Change iFrame on a Button Click Event
+    $( ".button" ).click(function(event){
+        $( "iframe" ).attr('src', $( '#url' ).val());
+    });
+});
+  </script>
+  <script>
+$(document).ready(function() {
+    var a = 3;
+    $('.desktop,.laptop,.tablet,.mobile').draggable({
+   start: function(event, ui) { $(this).css("z-index", a++); }
+});
+    $('.display div').click(function() {
+        $(this).addClass('top').removeClass('bottom');
+        $(this).siblings().removeClass('top').addClass('bottom');
+        $(this).css("z-index", a++);
+
+    });
+});
+</script>
+</body>
+</html>
