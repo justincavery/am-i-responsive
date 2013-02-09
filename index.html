@@ -45,10 +45,10 @@
 </div>
 <section class="url">
 <h1>See your site responsive</h1>
-<form>
-<input tabindex="0" type="url" id="url" name="url" value="http://">
+<form id="rwdform" name="rwdform">
+<input type="url" id="url" name="url"  placeholder="http:// <-must have">
 
-<a tabindex="1" class="button" href="#">GO!</a>
+<a class="button" href="#" onClick="_gaq.push(['_trackEvent', 'RWD', 'URL', document.rwdform.url.value]);" >GO!</a>
 </form>
 <p class="intro">A time saving exercise by <a href="http://twitter.com/justinavery">@justinavery</a> for <a href="http://responsivedesignweekly.com">RWD Weekly Newsletter</a></p>
 <p>I take a lot of screen shots of the various device breakpoints for responsive design and it takes a while to prepare them. This tools allows me to get what I need quickly, and hopefully it can be helpful for showing your more visual clients what you mean by responsive design when a suite of products isn't at the ready.</p>
@@ -79,7 +79,6 @@
 </section>
 <script src="//code.jquery.com/jquery-latest.js"></script>
 <script src="//code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
-
   <script>
 $(document).ready(function() {
 // Change iFrame on a Button Click Event
