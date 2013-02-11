@@ -116,13 +116,13 @@ function getUrlVars() {
 }
 var first = getUrlVars()["url"]; 
 var first = decodeURIComponent(first);
-
+var first = first.replace(/\#$/, '');
 
 if(first === "undefined") {
-  return true;
+  // don't do anything.
 }
 else {
-//  alert ("I am true " + first);
+//  take the url variable and update the iframes and input field
   $("iframe").attr('src',(first));
   $('#url').attr('value',(first));
 }
