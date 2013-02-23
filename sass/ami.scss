@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'RobotoMedium';
-    src: url('http://playground.responsivedesign.is/css/Roboto-Medium-webfont.eot');
-    src: url('http://playground.responsivedesign.is/css/Roboto-Medium-webfont.eot?#iefix') format('embedded-opentype'),
-         url('http://playground.responsivedesign.is/css/Roboto-Medium-webfont.woff') format('woff'),
-         url('http://playground.responsivedesign.is/css/Roboto-Medium-webfont.ttf') format('truetype'),
-         url('http://playground.responsivedesign.is/css/Roboto-Medium-webfont.svg#RobotoMedium') format('svg');
+    src: url('/fonts/Roboto-Medium-webfont.eot');
+    src: url('/fonts/Roboto-Medium-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/Roboto-Medium-webfont.woff') format('woff'),
+         url('/fonts/Roboto-Medium-webfont.ttf') format('truetype'),
+         url('/fonts/Roboto-Medium-webfont.svg#RobotoMedium') format('svg');
     font-weight: normal;
     font-style: normal;}
 
@@ -16,7 +16,8 @@ body {background-color: #fff;
       font-family: 'RobotoMedium';
       margin:0;
       padding:0;}
-
+fieldset {border:none;}
+label {float:left;text-indent: -99999px;}
 input {
   width: 85%;
   margin-right:1%;
@@ -41,7 +42,7 @@ a.button {
 background-color: #ede6dc;
 color: #cc4e46;
 width: 8%;
-line-height: 1.4em;
+line-height: 1.7em;
 margin: 0;
 font-size: 2em;
 text-align: center;
@@ -84,6 +85,7 @@ div {
    overflow:hidden;
 }
 
+
 iframe {
   transform: scale(0.219);
   -webkit-transform: scale(0.219);
@@ -98,6 +100,7 @@ iframe {
   margin: 0;
   padding: 0;
   position: relative;
+  background-color: #fff;
 }
 
   .mobile {
@@ -126,7 +129,7 @@ iframe {
   left: 120px;
   top: 230px;
     iframe {
-      width: 767px;
+      width: 768px;
       height: 1024px;
       top: 36px;
       left: 39px;
@@ -190,7 +193,8 @@ transform-origin: top left;
 .about-tool {
   font-size: 1.2em;
   max-width:64em;
-  float:left;
+  width: 80%;
+  margin:1em auto;
   li {margin-bottom: 0.5em;
 line-height: 1.2;}
 }
@@ -258,9 +262,10 @@ input {width:88%;}
   -ms-transform: scale(0.55);
   -moz-transform: scale(0.55);
 }
-a.button {font-size: 1.6em; line-height: 1.75em}
+a.button {font-size: 1.6em; line-height: 1.75em; margin-top:0.5em; width:100%;}
+input {height:1.2em; width:100%;}
+
 }
-input {height:1.6em;}
 
 @media (max-width:670px){
   .display{
