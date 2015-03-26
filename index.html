@@ -102,7 +102,7 @@
 </div>
 </section>
 <script src="//code.jquery.com/jquery-latest.js"></script>
-<script src="//code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+<script src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
   <script>
 $(document).ready(function() {
 // Change iFrame on a Button Click Event
@@ -115,8 +115,42 @@ $(document).ready(function() {
 $(document).ready(function() {
     var a = 3;
     $('.desktop,.laptop,.tablet,.mobile').draggable({
-   start: function(event, ui) { $(this).css("z-index", a++); }
-});
+        start: function(event, ui) { $(this).css("z-index", a++); },
+        stop: function(event, ui){
+            var pos = JSON.parse(localStorage.getItem('amiresponsivedesign.devicepositions'));
+            var name = $(this).attr('class').split(' ',1)[0];
+            pos[name].left = Math.round( $(this).position().left );
+            pos[name].top  = Math.round( $(this).position().top ); 
+            pos[name].zindex = $(this).css('z-index');        
+            localStorage.setItem('amiresponsivedesign.devicepositions', JSON.stringify(pos));
+            return true;
+        }
+    });
+    
+    function createDefaultDevicePositionsStorage(){
+        console.log("creating default values");
+        var x = {};
+        x.desktop = {}; x.desktop.left = 220;   x.desktop.top = 0;  x.desktop.zindex = 0;
+        x.laptop = {};  x.laptop.left = 560;    x.laptop.top = 264; x.laptop.zindex = 0;
+        x.tablet = {};  x.tablet.left = 120;    x.tablet.top = 230; x.tablet.zindex = 0;
+        x.mobile = {};  x.mobile.left = 300;    x.mobile.top = 375; x.mobile.zindex = 0;
+        
+        localStorage.setItem('amiresponsivedesign.devicepositions', JSON.stringify(x));
+    }
+    
+    function moveDevicesToOldPositions(){
+        if(localStorage.getItem('amiresponsivedesign.devicepositions')) {
+            var x = JSON.parse(localStorage.getItem('amiresponsivedesign.devicepositions'));
+            $('.desktop,.laptop,.tablet,.mobile').each(
+                function(index){
+                    var name = $(this).attr('class').split(' ',1)[0];
+                    $(this).css({top: x[name].top, left: x[name].left, zIndex: x[name].zindex});
+                });
+        }else{
+            createDefaultDevicePositionsStorage();
+        }
+    }
+    moveDevicesToOldPositions();
     $('.display div').click(function() {
         $(this).addClass('top').removeClass('bottom');
         $(this).siblings().removeClass('top').addClass('bottom');
