@@ -1,6 +1,8 @@
 am-i-responsive
 ===============
 
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/justincavery/am-i-responsive?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 A high fidelity preview of your responsive design across Desktop, Laptop, Tablet and Mobile.
 
 I take a lot of screen shots of the various device breakpoints for responsive design and it takes a while to prepare them. This tools allows me to get what I need quickly, and hopefully it can be helpful for showing your more visual clients what you mean by responsive design when a suite of products isn't at the ready.
