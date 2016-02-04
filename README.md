@@ -22,7 +22,7 @@ Add your URL to the input field and press GO! to see how your website looks acro
 - Mobile
  - 320x480px scaled down to scale(0.219)
 
-## A note on the vieports
+## A note on the viewports
 
 The viewports I have chosen are based on the devices that were a part of the responsive PSD layout I previously bought. Apologies to all the Adroid fans out there, you can save the “Adroid has a bigger market share” because although you're right I just don't care. Plus if you're going to use this to sell RWD to new clients they're likely to be more familiar and wow'd by Apple stuff anyway.
 
