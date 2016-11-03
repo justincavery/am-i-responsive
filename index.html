@@ -127,29 +127,26 @@ $(document).ready(function() {
 </script>
 
 <script>
-
-function getUrlVars() {
-    var vars = {};
-    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-        vars[key] = value;
-    });
-    return vars;
+function show_error(url) {
+  $('.about-tool > h2').before('<h2>Something went wrong</h2><p>' + url + '</p><br />');
 }
-var first = getUrlVars()["url"]; 
-var first = decodeURIComponent(first);
-var first = first.replace(/\#$/, '');
 
-if(first === "undefined") {
-  // don't do anything.
-}
-else {
-//  take the url variable and update the iframes and input field
-  $("iframe").attr('src',(first));
-  $('#url').attr('value',(first));
+var parts = document.location.href.split(/[?&]+([^=&]+)=([^&]*)/gi).slice(1);
+var url = parts[parts.indexOf('url') + 1] || null;
+
+// Take the url variable and update the iframes and input field when the URL is not null
+if (url !== null) {
+  var decoded = decodeURIComponent(url).replace(/#/g, '');
+
+  // We only support http/https protocols since everything else _can_ be a security issue
+  if (/^(http|https)\:/i.test(decoded) === false) {
+    show_error('Invalid URL <strong>' + (decoded) + '</strong>, note that only http/https URLs are supported');
+  } else {
+    $("iframe").attr('src', decoded);
+    $('#url').attr('value', decoded);
+  }
 }
 </script>
-
-
 
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
