@@ -33,3 +33,4 @@ The viewports I have chosen are based on the devices that were a part of the res
 - 09/02/13 Added jQuery UI for the ability to drag the elements around the page. Remember that the <div>'s are more than the visible image so you might need to play around a bit with where you can click. Thanks Tim.
 - 09/02/13 update the layout to be responsive across devices (even though it was just a tool for screenshots), although the iframes are WAY taller on tablet and iphone then they should be, still need to fix that... thanks @silentritual & @amberweinberg.
 - 09/02/13 Scroll bars removed from tablet and mobile, cheers @benbrignall.
+- 10/01/21 Update of reference for style document and jQuery UI v1.12 [ricardovolert](https://github.com/ricardovolert/).
